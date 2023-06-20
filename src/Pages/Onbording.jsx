@@ -32,6 +32,9 @@ const Onbording = () => {
 // Different screens are rendered over here but a better approch would be using Routing to render diffrent screens
   // this components checks for the number of replys and renders component accordingly
 
+
+  // extracted background image quality is according to the docx file and can be changed in regard of the orignal image
+
   return (
     <div className={isDay ? "containerDay" : "containerNight"}>
       {answers.length > 3 ? <Screen3/> : answers.length > 0 ? <Domain/> : <Start/> }

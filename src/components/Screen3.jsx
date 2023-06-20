@@ -17,8 +17,11 @@ const Screen3 = () => {
     const { tempUserId, deviceId, dispatch } = useContext(FlowContext);
 
 
-    // submit method for sending the submited data to api and then generating OTP 
+    // submit method for sending the submited data to api and then generating OTP
     
+    // this api call is not working as its giving CORS error which is to confiqured on server side 
+    // county code is also according to the open source library (react-phone-input-2) which can also configured according to the API if needed
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
