@@ -2,19 +2,20 @@ import React, { useContext, useEffect, useState } from 'react'
 import { FlowContext } from '../context/FlowContext';
 import axios from "axios";
 import "./domain.scss"
-
 const Domain = () => {
-
     const [state, setState] = useState([]);
     const [bucket, setBucket] = useState("");
     const [number, setNumber] = useState(0);
-    const { tempUserId, answers, s3url, dispatch } = useContext(FlowContext);
+    const { tempUserId, s3url, answers, dispatch } = useContext(FlowContext);
+    
+    // fetch request to api to get all the question and then those questions are rendered 
+    // request is only done once 
 
     useEffect(() => {
         const fetchData = async () => { 
             try {
                const res = await axios.post(process.env.REACT_APP_API_URL_DOMAIN,
-                   { tempUserId: , selectedDomainId:  }, {
+                   { tempUserId, selectedDomainId: answers[0].key}, {
                    headers: {
                        'appflavour': 'DEV',
                    }
@@ -28,6 +29,8 @@ const Domain = () => {
         fetchData();
     }, []);
 
+    // after pressing the answer the responce is registerd in answers array as the app state
+    //after that next question is rendered for domain classification
 
     const handleSubmit = (answer) => {
         dispatch({
@@ -36,6 +39,7 @@ const Domain = () => {
                 answer: answer,
             }
         })
+        // used to render next question (pagination machanisum)
         setNumber(prev => prev + 1);
     }
 

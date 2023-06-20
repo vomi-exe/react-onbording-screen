@@ -1,28 +1,37 @@
-.domain-select-message-wrapper{
+.start-domain-select-message-wrapper{
     margin-top: 230px;
     width: 350px;
     text-align: center;
+    width: 100%;
     h3{
         margin: 0;
         font-size: 24px;
     }
+    @media (max-width: 600px) {
+        margin-top: 100px;
+    }
 }
 
-.domain-select-message-details{
+.start-domain-select-message-details{
     margin-top: 25px;
     width: 350px;
     text-align: center; 
     font-size: 18px;
     list-style: 2px;
     word-spacing: 2px;
+    width: 80%;
 }
 
-.domain-select-message-answers-wrapper{
+.start-domain-select-message-answers-wrapper{
     margin-top: 50px;
     display: flex;
     flex-direction: row;
     gap: 15px;
-    .card-wrapper{
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    .start-card-wrapper{
         height: 170px;
         width: 290px;
         border-radius: 10px;
@@ -34,7 +43,11 @@
         flex-direction: column;
         align-items: flex-start;
         cursor: pointer;
-        .card-image{
+        @media (max-width: 600px) {
+            height: 170px;
+            width: 240px;
+        }
+        .start-card-image{
             height: 50px;
             width: 50px;
             img{
@@ -43,12 +56,12 @@
                 border-radius: 50%;
             }
         }
-        .card-label{
+        .start-card-label{
             margin-top: 10px;
             font-size: 18px;
             font-weight: bold;
         }
-        .card-desc{
+        .start-card-desc{
             margin-top: 5px;
             font-size: 14px;
         }

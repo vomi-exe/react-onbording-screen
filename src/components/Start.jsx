@@ -5,7 +5,9 @@ import { FlowContext } from '../context/FlowContext'
 
 const Start = () => {
     const [state, setState] = useState({});
-    const { newUser, deviceId, appFlavour, versionNumber,dispatch } = useContext(FlowContext);
+    const { newUser, deviceId, appFlavour, versionNumber, dispatch } = useContext(FlowContext);
+    
+    // runs the api call the component mounts to get the data from api and is done only once
 
     useEffect(() => {
         const fetchData = async () => {
@@ -25,6 +27,7 @@ const Start = () => {
         fetchData();
     }, [])
     
+    // changes the state of the app by sending data to reducer and its updates the state acordingly
 
     const handleSubmit = (domain) => {
         dispatch({
@@ -37,25 +40,26 @@ const Start = () => {
         })
     }
 
+    //renders the component dynamically
   return (
       <>
-      <div className="domain-select-message-wrapper">
+      <div className="start-domain-select-message-wrapper">
               <h3>{ state.domainSelectionMessage}</h3>
           </div>
-          <div className="domain-select-message-details">
+          <div className="start-domain-select-message-details">
           {state.domainSelectionMessageDetails}
           </div>
-          <div className="domain-select-message-answers-wrapper">
+          <div className="start-domain-select-message-answers-wrapper">
               {state.domains && state.domains.map((domain) => {
                   return (
-                  <div onClick={() => handleSubmit(domain)} key={ domain.key }className="card-wrapper">
-                  <div className="card-image">
+                  <div onClick={() => handleSubmit(domain)} key={ domain.key }className="start-card-wrapper">
+                  <div className="start-card-image">
                       <img src={`${state.appurls.s3url}/${domain.image}`} alt={domain.label } />
                   </div>    
-                  <div className="card-label">
+                  <div className="start-card-label">
                               { domain.label}
                   </div>
-                  <div className="card-desc">
+                  <div className="start-card-desc">
                               { domain.description }
                   </div>
               </div>

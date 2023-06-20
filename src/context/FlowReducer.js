@@ -1,4 +1,6 @@
-const AuthReducer = (state, action) => {
+// reducer for state containing state changing logic
+
+const FlowReducer = (state, action) => {
 
     switch (action.type) {
         case "FLOW_START":
@@ -10,23 +12,17 @@ const AuthReducer = (state, action) => {
             };
         case "FLOW_DOMAIN":
             return {
+                ...state,
                 answers: [...state.answers, action.payload.answer]
             };
         case "FLOW_OTTP":
             return {
-                user: null,
-                isFetching: false,
-                error: true
-            };
-        case "LOGOUT":
-            return {
-                user: null,
-                isFetching: false,
-                error: false
+                ...state,
+                answers: [...state.answers, action.payload.answer]
             };
         default:
             return { ...state };
     }
 }
 
-export default AuthReducer;
+export default FlowReducer;
